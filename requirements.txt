@@ -28,6 +28,7 @@ defusedxml=0.7.1=pyhd3eb1b0_0
 executing=0.8.3=pyhd3eb1b0_0
 expat=2.6.2=h313beb8_0
 filelock=3.13.1=py312hca03da5_0
+forex-python==1.8
 fsspec=2024.3.1=py312hca03da5_0
 gettext=0.21.0=h13f89a0_1
 glib=2.78.4=h313beb8_0
