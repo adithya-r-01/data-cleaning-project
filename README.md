@@ -11,9 +11,9 @@
 git clone https://github.com/adithya-r-01/data-cleaning-project.git
 ```
 
-2. The datasets used for the cleaning are explicitly _not provided_ within this repository. To download the datasets go to [this link](https://uofi.app.box.com/s/zh2hxfkq0cc6vyftw91nqa4smdpq7ybk) and at minimum download the `Menu.csv`, `Dish.csv`, and `MenuItem.csv`.
+2. The datasets used for the cleaning _are_ explicitly within this repository. Untar the `data.tar.gz` file for the datasets or download the datasets directly from [this link](https://uofi.app.box.com/s/zh2hxfkq0cc6vyftw91nqa4smdpq7ybk) and at minimum download the `Menu.csv`, `Dish.csv`, and `MenuItem.csv`.
 
-3. After you have downloaded the csv files into the same directory as the cloned local repository activate your `conda` environment to inject the dependencies required for this project. This can be done via the command below (assuming you have `conda`).
+3. After you have downloaded the csv files into a data directory in the same directory as the cloned local repository activate your `conda` environment to inject the dependencies required for this project. This can be done via the command below (assuming you have `conda`).
 
 ```bash
 conda create --name datacleaningproj --file requirements.txt
