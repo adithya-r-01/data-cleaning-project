@@ -1,4 +1,4 @@
-# @begin DataCleaningScript
+# @begin ICViolationsScript
 
 import pandas as pd
 import numpy as np
@@ -284,36 +284,36 @@ for column in original_lengths:
 # @in menu_item_csv @uri file:./data/MenuItem.csv
 # @in dish_csv @uri file:./data/Dish.csv
 # @out df_menu_item @out df_dish
-df = pd.read_csv("./data/MenuItem.csv")
-dish_df = pd.read_csv("./data/Dish.csv")
+df_menu_item = pd.read_csv("./data/MenuItem.csv")
+df_dish = pd.read_csv("./data/Dish.csv")
 # @end Load_MenuItem_Data
 
 # Create a copy of the original DataFrame
-df_original = df.copy()
+df_original_menu_item = df_menu_item.copy()
 
 # Create a copy to be used for cleaning
-df_cleaned = df.copy()
+df_cleaned_menu_item = df_menu_item.copy()
 
 # @begin Replace_Empty_Strings_MenuItem @desc Replace empty strings with NaN in MenuItem data
 # @in df_menu_item
-# @out df_cleaned_menu_item
-df_cleaned.replace("", pd.NA, inplace=True)
+# @out df_cleaned_menu_item_replaced
+df_cleaned_menu_item.replace("", pd.NA, inplace=True)
 # @end Replace_Empty_Strings_MenuItem
 
 # @begin Drop_Missing_Price @desc Remove the rows with missing values in the price column
-# @in df_cleaned_menu_item
+# @in df_cleaned_menu_item_replaced
 # @out df_cleaned_menu_item_price
-df_cleaned = df_cleaned.dropna(subset=["price"])
+df_cleaned_menu_item = df_cleaned_menu_item.dropna(subset=["price"])
 # @end Drop_Missing_Price
 
 # @begin Display_Price_Results @desc Display the lengths of original and cleaned data for price column
-# @in df_original @in df_cleaned_menu_item_price
+# @in df_original_menu_item @in df_cleaned_menu_item_price
 original_lengths = {
-    "price": count_empty(df_original, "price")
+    "price": count_empty(df_original_menu_item, "price")
 }
 
 cleaned_lengths = {
-    "price": count_empty(df_cleaned, "price")
+    "price": count_empty(df_cleaned_menu_item, "price")
 }
 
 print(f"{'Column':<10} | {'Original Violations':<15} | {'Cleaned Violations':<15}")
@@ -325,7 +325,7 @@ for column in original_lengths:
 # @begin Query_Invalid_Price_Rows @desc Query invalid rows for price column
 # @in df_cleaned_menu_item_price
 # @out invalid_price_rows
-invalid_rows = df_cleaned.query("price == ''")
+invalid_rows = df_cleaned_menu_item.query("price == ''")
 print("\nQuery Result:", invalid_rows)
 # @end Query_Invalid_Price_Rows
 
@@ -337,13 +337,13 @@ def standardize_name(name):
         return name
     return ' '.join(word.capitalize() for word in name.split())
 
-dish_df['name'] = dish_df['name'].apply(standardize_name)
+df_dish['name'] = df_dish['name'].apply(standardize_name)
 # @end Standardize_Name
 
 # @begin Handle_Duplicates @desc Handle duplicate dish names
 # @in df_dish
-# @out id_mapping @out df_cleaned_dish
-duplicates = dish_df[dish_df.duplicated(subset='name', keep=False)]
+# @out id_mapping @out df_cleaned_menu_item_dish
+duplicates = df_dish[df_dish.duplicated(subset='name', keep=False)]
 
 duplicate_groups = duplicates.groupby('name')['id'].apply(list).reset_index()
 
@@ -355,11 +355,11 @@ for _, row in duplicate_groups.iterrows():
     for duplicate_id in ids[1:]:
         id_mapping[duplicate_id] = first_id
 
-df_cleaned['dish_id'] = df_cleaned['dish_id'].replace(id_mapping)
+df_cleaned_menu_item['dish_id'] = df_cleaned_menu_item['dish_id'].replace(id_mapping)
 # @end Handle_Duplicates
 
 # @begin Verify_Integrity @desc Verify integrity of the cleaned data
-# @in df_cleaned_dish @in df_dish @in id_mapping
+# @in df_cleaned_menu_item @in df_dish @in id_mapping
 # @out violations
 def verify_integrity(df_cleaned, dish_df, id_mapping):
     id_to_name = dish_df.set_index('id')['name'].to_dict()
@@ -382,11 +382,11 @@ def verify_integrity(df_cleaned, dish_df, id_mapping):
     return violations
 
 original_lengths = {
-    "bad mappings": verify_integrity(df_original, dish_df, id_mapping)
+    "bad mappings": verify_integrity(df_original_menu_item, df_dish, id_mapping)
 }
 
 cleaned_lengths = {
-    "bad mappings": verify_integrity(df_cleaned, dish_df, id_mapping)
+    "bad mappings": verify_integrity(df_cleaned_menu_item, df_dish, id_mapping)
 }
 
 print(f"{'Column':<10} | {'Original Violations':<15} | {'Cleaned Violations':<15}")
@@ -395,4 +395,4 @@ for column in original_lengths:
     print(f"{column:<10} | {original_lengths[column]:<15} | {cleaned_lengths[column]:<15}")
 # @end Verify_Integrity
 
-# @end DataCleaningScript
+# @end ICViolationsScript

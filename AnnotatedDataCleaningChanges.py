@@ -1,4 +1,4 @@
-# @begin DataCleaningScript
+# @begin DataCleaningChangesScript
 
 import pandas as pd
 import numpy as np
@@ -215,4 +215,4 @@ print("-" * 35)
 print(f"{'dish_id':<20} | {diff_count_a:<15}")
 # @end Compare_Columns_DishID
 
-# @end DataCleaningScript
+# @end DataCleaningChangesScript
