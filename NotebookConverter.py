@@ -5,7 +5,7 @@ Converts Jupyter notebooks into standalone Python scripts
 import nbformat
 
 # Load the Jupyter notebook
-with open("./DataCleaningChanges.ipynb", "r", encoding="utf-8") as file:
+with open("./ICViolations.ipynb", "r", encoding="utf-8") as file:
     notebook = nbformat.read(file, as_version=4)
 
 # Collect all code into a single script
@@ -16,7 +16,7 @@ for cell in notebook.cells:
         script_code += "\n\n"
 
 # Save the code to a single Python file
-script_path = "./DataCleaningChanges.py"
+script_path = "./ICViolations.py"
 with open(script_path, "w", encoding="utf-8") as file:
     file.write(script_code)
 
