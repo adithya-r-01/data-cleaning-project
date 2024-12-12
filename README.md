@@ -1,7 +1,4 @@
-# CS 513 Data Cleaning Project
-
-| Team 166 | Adithya Ramanujam, Yi Heng Yan, Safeer Ahmed |
-|:------------:|:------------------------------------------------:|
+# Data Cleaning Project
 
 ### Getting Started
 
