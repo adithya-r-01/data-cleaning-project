@@ -4,7 +4,10 @@
 
 > Designing a system to clean restaurant and menu information before performing further analysis.
 
-### Getting Started
+- [Getting Started](https://github.com/adithya-r-01/data-cleaning-project/tree/main?tab=readme-ov-file#getting-started)
+- [Understanding The Notebooks](https://github.com/adithya-r-01/data-cleaning-project/tree/main?tab=readme-ov-file#understanding-the-notebooks)
+
+## Getting Started
 
 1. Start by cloning this repository to your local environment
 
@@ -25,7 +28,7 @@ conda activate datacleaningproj
 
 4. Your local environment should now be setup to interact with the project
 
-### Understanding The Notebooks
+## Understanding The Notebooks
 
 The notebooks provided are either responsible for performing the cleaning themselves or serve as benchmarks that _assess_ the cleaning performed.
 
