@@ -1,6 +1,8 @@
 <h1 align="center" style="border-bottom: none">
-    <a href="https://prometheus.io" target="_blank"><img alt="Prometheus" src="./.assets/heading-image.svg"></a><br>Data Cleaning Project
+    <a href="https://prometheus.io" target="_blank"><img alt="Prometheus" src="./.assets/heading-image.svg"></a><br>Restaurant Cleaning Project
 </h1>
+
+> Designing a system to clean restaurant and menu information before performing further analysis.
 
 ### Getting Started
 
