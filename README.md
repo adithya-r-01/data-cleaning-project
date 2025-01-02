@@ -32,10 +32,7 @@ conda activate datacleaningproj
 
 The notebooks provided are either responsible for performing the cleaning themselves or serve as benchmarks that _assess_ the cleaning performed.
 
-`MenuCleaning.ipynb` tracks the full end-to-end cleaning of the `Menu.csv` dataset along with helpful annotations to understand how/why certain steps were performed.
-
-`MenuItemCleaning.ipynb` tracks the full end-to-end cleaning of the `MenuItem.csv` dataset along with helpful annotations to understand how/why certain steps were performed.
-
-`DataCleaningChanges.ipynb` was used to acquire quantitative metrics about _how_ the performed cleaning changes the underlying datasets i.e number of cells removed or modified.
-
-`ICViolations.ipynb` assess the integrity constraints defined by the group against the cleaned dataset.
+- `MenuCleaning.ipynb` tracks the full end-to-end cleaning of the `Menu.csv` dataset along with helpful annotations to understand how/why certain steps were performed.
+- `MenuItemCleaning.ipynb` tracks the full end-to-end cleaning of the `MenuItem.csv` dataset along with helpful annotations to understand how/why certain steps were performed.
+- `DataCleaningChanges.ipynb` was used to acquire quantitative metrics about _how_ the performed cleaning changes the underlying datasets i.e number of cells removed or modified.
+- `ICViolations.ipynb` assess the integrity constraints defined by the group against the cleaned dataset.
